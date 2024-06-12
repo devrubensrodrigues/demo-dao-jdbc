@@ -20,6 +20,13 @@ public class Program {
 		System.out.println("\n=== TEST 2: seller findByDepartment ===");
 		List<Seller> list = sellerDao.findByDepartment(new Department(2, null));
 		list.forEach(System.out::println);
+		
+		System.out.println("\n=== TEST 3: seller findAll ===");
+		List<Seller> listAll = sellerDao.findAll();
+		listAll.forEach(System.out::println);
+		
+		/*System.out.println("\n=== TEST 4: seller insert ===");
+		Seller sellerInsert = new Seller(null, "Rubens", "paulo.rolim10@gmail.com", new Date(), 3000.00, new Department(4, null));
+		sellerDao.insert(sellerInsert);*/
 	}
-
 }
