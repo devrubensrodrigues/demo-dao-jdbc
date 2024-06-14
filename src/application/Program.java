@@ -31,10 +31,14 @@ public class Program {
 		sellerDao.insert(sellerInsert);
 		System.out.println("Inserted! New id = " + sellerInsert.getId());*/
 
-		System.out.println("\n=== TEST 5: seller update ===");
+		/*System.out.println("\n=== TEST 5: seller update ===");
 		Seller sellerUp = new Seller(13, "Greg Gregorio", "greg@hotmail.com", new Date(), 10000.00, new Department(4, null));
 		sellerDao.update(sellerUp);
-		System.out.println("Updated! The id = " + sellerUp.getId());
+		System.out.println("Updated! The id = " + sellerUp.getId());*/
+		
+		System.out.println("\n=== TEST 6: seller delete ===");
+		sellerDao.deleteById(13);
+		
 		
 	}
 }
