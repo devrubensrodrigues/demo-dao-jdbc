@@ -80,17 +80,7 @@ public class SellerDaoJDBC implements SellerDao{
 			st.setInt(5, obj.getDepartment().getId());
 			st.setInt(6, obj.getId());
 			
-			int rowsAffected = st.executeUpdate();
-			if(rowsAffected > 0) {
-				ResultSet rs = st.getGeneratedKeys();
-				if (rs.next()) {
-					int id = rs.getInt(1);
-					obj.setId(id);
-				}
-				DB.closeResultSet(rs);
-			}else {
-				throw new DbException("Unexpected error! No rows affected!");
-			}			
+			st.executeUpdate();			
 		}
 		catch(SQLException e) {
 			throw new DbException(e.getMessage());
@@ -104,17 +94,10 @@ public class SellerDaoJDBC implements SellerDao{
 	public void deleteById(Integer id) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-					"DELETE FROM seller "
-					+ "WHERE Id = ?",
-					Statement.RETURN_GENERATED_KEYS);
+			st = conn.prepareStatement("DELETE FROM seller WHERE Id = ?");
 			
 			st.setInt(1, id);
-			int rowsAffected = st.executeUpdate();
-			
-			if(rowsAffected == 0) {
-				throw new DbException("Unexpected error! No rows affected!");
-			}
+			st.executeUpdate();
 		}
 		catch(SQLException e) {
 			throw new DbException(e.getMessage());
