@@ -26,11 +26,15 @@ public class Program {
 		List<Seller> listAll = sellerDao.findAll();
 		listAll.forEach(System.out::println);
 		
-		System.out.println("\n=== TEST 4: seller insert ===");
+		/*System.out.println("\n=== TEST 4: seller insert ===");
 		Seller sellerInsert = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.00, new Department(2, null));
 		sellerDao.insert(sellerInsert);
-		System.out.println("Inserted! New id = " + sellerInsert.getId());
+		System.out.println("Inserted! New id = " + sellerInsert.getId());*/
+
+		System.out.println("\n=== TEST 5: seller update ===");
+		Seller sellerUp = new Seller(13, "Greg Gregorio", "greg@hotmail.com", new Date(), 10000.00, new Department(4, null));
+		sellerDao.update(sellerUp);
+		System.out.println("Updated! The id = " + sellerUp.getId());
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 }
